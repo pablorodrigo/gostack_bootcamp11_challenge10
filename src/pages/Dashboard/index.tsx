@@ -40,6 +40,18 @@ const Dashboard: React.FC = () => {
   ): Promise<void> {
     try {
       // TODO ADD A NEW FOOD PLATE TO THE API
+
+      const { image, name, description, price } = food;
+
+      const response = await api.post('/foods', {
+        image,
+        name,
+        description,
+        price,
+        available: true,
+      });
+
+      setFoods([...foods, response.data]);
     } catch (err) {
       console.log(err);
     }
